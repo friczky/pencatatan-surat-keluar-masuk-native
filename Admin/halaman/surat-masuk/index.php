@@ -79,7 +79,7 @@ $no = 1;
                         <td><button class="btn btn-info" data-toggle="modal" data-target="#my-modal<?= $data['id']?>">Lihat</button></td>
                         <td>
                             <a href="edit.php?id=<?= $data['id']?>" class="btn btn-primary"><i class="fa fa-edit"></i></a>
-                            <a href="aksi.php?id=<?= $data['id']?>&hapus" onclick="return confirm('Apakah anda ingin menghapus data surat ini ?')" class="btn btn-danger"><i class="fa fa-trash"></i></a>
+                            <a href="aksi_hapus.php?id=<?= $data['id']?>" onclick="return confirm('Apakah anda ingin menghapus data surat ini ?')" class="btn btn-danger"><i class="fa fa-trash"></i></a>
                         </td>
                     </tr>
                     <?php }?>

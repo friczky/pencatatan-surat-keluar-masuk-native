@@ -4,10 +4,10 @@ include '../../komponen/header.php';
 include '../../komponen/navbar.php';
 include '../../komponen/sidebar.php';
 
-$id = $_GET['id'];
-$sql = "SELECT * FROM format_surat WHERE id = $id";
-$query = mysqli_query($koneksi,$sql);
-$data1 = mysqli_fetch_array($query);
+$id     = $_GET['id'];
+$sql    = "SELECT * FROM format_surat join arsip_surat on format_surat.id_format_surat = arsip_surat.id_format_surat WHERE id = $id";
+$query  = mysqli_query($koneksi,$sql);
+$data1  = mysqli_fetch_array($query);
 
 $tanggal_surat = $data1['tahun'].'-'.$data1['bulan'].'-'.$data1['tanggal'];
 $tanggal = date('Y-m-d', strtotime($tanggal_surat));
@@ -56,7 +56,7 @@ $tanggal = date('Y-m-d', strtotime($tanggal_surat));
                                     <div class="tab-pane" id="settings">
                                       <?php foreach ($query as $data) { ?>
                                         <form
-                                            action="aksi_tambah.php"
+                                            action="aksi_edit.php?id=<?= $data['id'] ?>"
                                             method="post"
                                             class="form-horizontal"
                                             enctype="multipart/form-data">
@@ -134,7 +134,9 @@ $tanggal = date('Y-m-d', strtotime($tanggal_surat));
                                                 </div>
                                                 <div class="col col-sm-6">
                                                     <label for="">Arsip</label>
-                                                    <input type="file" name="file" class="form-control" required>
+                                                    <input type="file" name="file" class="form-control" >
+                                                    <input type="hidden" name="file_old" value="<?= $data['file']?>">
+                                                    <input type="hidden" name="id_format_surat" value="<?= $data['id_format_surat']?>">
                                                 </div>
                                             </div>
                                             <div class="form-group">
