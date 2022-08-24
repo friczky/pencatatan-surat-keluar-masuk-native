@@ -1,4 +1,4 @@
-# CRUD KIT
+# ADMINISTRASI SURAT MASUK
 Aplikasi ini merupakan  kit curd php native. Aplikasi ini dibuat menggunakan PHP Native dan menggunakan database Mysql.
 
 # Fitur
@@ -22,7 +22,7 @@ Aplikasi ini merupakan  kit curd php native. Aplikasi ini dibuat menggunakan PHP
 
 Clone dari github 
 ```
-git clone git@github.com:friczky/master-crud-auth-php-native.git
+git clone
 ```
 
 ganti nama folder di Config/folder.php
