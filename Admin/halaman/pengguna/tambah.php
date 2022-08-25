@@ -57,7 +57,7 @@ include '../../komponen/sidebar.php';
                           <input type="password" name="password" class="form-control" id="inputName2" placeholder="Password" required>
                         </div>
                       </div>
-                      <div class="form-group row">
+                      <!-- <div class="form-group row">
                         <label for="inputExperience" class="col-sm-2 col-form-label">Role</label>
                         <div class="col-sm-10">
                           <select name="role" id="" class="form-control" required>
@@ -66,11 +66,12 @@ include '../../komponen/sidebar.php';
                             <option value="1">Pelamar</option>
                           </select>
                         </div>
-                      </div>
+                      </div> -->
                       <div class="form-group row">
                         <label for="inputExperience" class="col-sm-2 col-form-label">Foto</label>
                         <div class="col-sm-10">
                           <input type="file" name="foto" id="" class="form-control" required>
+                          <input type="hidden" name="role" value="0">
                         </div>
                       </div>
                       

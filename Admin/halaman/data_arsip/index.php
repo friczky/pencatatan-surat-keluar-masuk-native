@@ -5,7 +5,8 @@ include '../../komponen/header.php';
 include '../../komponen/navbar.php';
 include '../../komponen/sidebar.php';
 
-$sql = "SELECT * FROM arsip_surat join format_surat on arsip_surat.id_format_surat == format_surat.id_format_surat";
+
+$sql = "SELECT * FROM arsip_surat";
 $query = mysqli_query($koneksi,$sql);
 $no =1;
 
@@ -65,14 +66,14 @@ $no =1;
                         <td><?= $no ++ ?>.</td>
                         <td>
                             <?php
-                            if($data['jenis_surat'] == 0){
-                                echo 'Surat Masuk';
+                            if($data['jenis_file'] == 0){
+                                echo '<div class="badge badge-success">Surat Masuk</div>';
                             }else {
-                                echo 'Surat Keluar';
+                                echo '<div class="badge badge-info">Surat Keluar</div>';
                             }
                             ?>
                         </td>
-                        <td><?= $data['file']?></td>
+                        <td><a href="../../upload/<?= $data['file']?>" class="btn btn-primary" target="_blank"><i class="fa fa-file"> Lihat Data</i></a></td>
             
                     </tr>
                     <?php } ?>

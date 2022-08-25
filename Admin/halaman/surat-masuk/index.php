@@ -5,7 +5,7 @@ include '../../komponen/header.php';
 include '../../komponen/navbar.php';
 include '../../komponen/sidebar.php';
 
-$sql = "SELECT * FROM format_surat join arsip_surat on format_surat.id_format_surat = arsip_surat.id_format_surat where jenis_surat = '0'";
+$sql = "SELECT * FROM format_surat join arsip_surat on format_surat.id_format_surat = arsip_surat.id_format_surat where jenis_surat = '0' order by id desc";
 $query = mysqli_query($koneksi,$sql);
 $no = 1;
 

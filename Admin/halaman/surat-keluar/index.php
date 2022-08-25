@@ -1,9 +1,13 @@
 <?php 
 
-$judul = 'Surat Masuk';
+$judul = 'Surat Keluar';
 include '../../komponen/header.php';
 include '../../komponen/navbar.php';
 include '../../komponen/sidebar.php';
+
+$sql = "SELECT * FROM format_surat join arsip_surat on format_surat.id_format_surat = arsip_surat.id_format_surat where jenis_surat = '1' order by id desc";
+$query = mysqli_query($koneksi,$sql);
+$no = 1;
 
 ?>
 
@@ -37,7 +41,7 @@ include '../../komponen/sidebar.php';
                     <h3 class="card-title">Data Surat Keluar</h3>
                 </div>
                 <div class="col-sm-6 text-right">
-                    <a href="<?= admin()?>halaman/pengguna/tambah.php" class="btn btn-primary">
+                    <a href="tambah.php" class="btn btn-primary">
                         <i class="fa fa-plus"></i> Tambah
                     </a>
                 </div>
@@ -54,39 +58,31 @@ include '../../komponen/sidebar.php';
                 <thead>
                     <tr align="center">
                         <th>No.</th>
-                        <th>Nama</th>
-                        <th>Email</th>
-                        <th>Role</th>
-                        <th>Foto</th>
+                        <th>Nomor Agenda</th>
+                        <th>Asal Surat</th>
+                        <th>Perihal</th>
+                        <th>Detail</th>
                         <th>Aksi</th>
                     </tr>
                 </thead>
                 <tbody>
                    <?php 
-                    $sql = "SELECT * FROM pengguna";
-                    $query = mysqli_query($koneksi,$sql);
-                    $i = 1;
-                    while($data = mysqli_fetch_assoc($query)){
+                    foreach ($query as $data) {
                    ?>
                     <tr align="center">
-                        <td><?= $i ?>.</td>
-                        <td><?= $data['nama']?></td>
-                        <td><?= $data['email']?></td>
+                        <td><?= $no++ ?>.</td>
+                        <td><?= $data['nomor_agenda']?></td>
+                        <td><?= $data['asal_surat']?></td>
                         <td>
-                            <?php if($data['role'] == '0'){
-                                echo '<span class="badge badge-danger">Admin</span>';
-                            }else{
-                                echo '<span class="badge badge-success">Pelamar</span>';
-                            }
-                            ?>
+                            <?= $data['perihal']?>
                         </td>
-                        <td><img src="../../upload/<?= $data['foto']?>" width="50px" alt=""></td>
+                        <td><button class="btn btn-info" data-toggle="modal" data-target="#my-modal<?= $data['id']?>">Lihat</button></td>
                         <td>
-                            <a href="edit.php?id=<?= $data['id']?>" class="btn btn-primary">Edit</a>
-                            <a href="aksi.php?id=<?= $data['id']?>&hapus" onclick="return confirm('Apakah anda ingin menghapus pengguna ini?')" class="btn btn-danger">Hapus</a>
+                            <a href="edit.php?id=<?= $data['id']?>" class="btn btn-primary"><i class="fa fa-edit"></i></a>
+                            <a href="aksi_hapus.php?id=<?= $data['id']?>" onclick="return confirm('Apakah anda ingin menghapus data surat ini ?')" class="btn btn-danger"><i class="fa fa-trash"></i></a>
                         </td>
                     </tr>
-                    <?php $i++; } ?>
+                    <?php }?>
                 </tbody>
                 
             </table>
@@ -104,4 +100,10 @@ include '../../komponen/sidebar.php';
 <!-- /.content -->
 </div>
 
-<?php include '../../komponen/footer.php'?>
+
+<?php 
+
+include 'detail_modal.php';
+include '../../komponen/footer.php'
+
+?>

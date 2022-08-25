@@ -37,7 +37,6 @@ if(isset($_POST['tambah'])){
     $nama = $_POST['nama'];
     $email = $_POST['email'];
     $password = $_POST['password'];
-    $role = $_POST['role'];
     $foto = $_FILES['foto']['name'];
     $id = $_POST['id'];
     $foto_old = $_POST['foto_old'];
@@ -60,7 +59,7 @@ if(isset($_POST['tambah'])){
     }
 
     //mengupdate data
-    $sql = "UPDATE pengguna SET nama = '$nama', email = '$email', password = '$password', role = '$role', foto = '$foto_save' WHERE id = $_POST[id]";
+    $sql = "UPDATE pengguna SET nama = '$nama', email = '$email', password = '$password',  foto = '$foto_save' WHERE id = $_POST[id]";
     $simpan_bank=mysqli_query($koneksi,$sql);
     if ($simpan_bank) {
         header("Location:index.php?pesan=Berhasil Mengubah Pengguna");

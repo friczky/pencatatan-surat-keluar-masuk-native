@@ -3,7 +3,7 @@
 if (!isset($_SESSION['role'])) {
     echo "<script>alert";
     echo "('Anda Tidak Memiliki Akses, Silahkan Login');";
-    echo "window.location.href='../../../Auth/login.php';";
+    echo "window.location.href='../../../../Auth/login.php';";
     echo "</script>";
 }
  
@@ -74,7 +74,7 @@ $row2 = mysqli_fetch_array($query2);
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="<?= admin()?>halaman/surat-masuk/" class="nav-link">
+                <a href="<?= admin()?>halaman/surat-masuk" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Surat Masuk</p>
                 </a>
@@ -99,13 +99,13 @@ $row2 = mysqli_fetch_array($query2);
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="<?= admin()?>halaman/pengguna/tambah.php" class="nav-link">
+                <a href="<?= admin()?>halaman/rekap/surat-masuk.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Surat Masuk</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="<?= admin()?>halaman/pengguna" class="nav-link">
+                <a href="<?= admin()?>halaman/rekap/surat-keluar.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Surat Keluar</p>
                 </a>
@@ -124,7 +124,7 @@ $row2 = mysqli_fetch_array($query2);
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="<?= admin()?>halaman/pengguna/tambah.php" class="nav-link">
+                <a href="<?= admin()?>halaman/data_arsip" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Data Arsip Surat</p>
                 </a>
@@ -132,30 +132,7 @@ $row2 = mysqli_fetch_array($query2);
             </ul>
           </li>
   
-           <!-- halaman master cetak  -->
-           <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-print"></i>
-              <p>
-                Master Cetak
-                <i class="fas fa-angle-left right"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="<?= admin()?>halaman/pengguna/tambah.php" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Surat Masuk</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="<?= admin()?>halaman/pengguna" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Surat Keluar</p>
-                </a>
-              </li>
-            </ul>
-          </li>
+           
 
          <!-- halaman master pengguna  -->
           <li class="nav-item">

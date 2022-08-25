@@ -24,7 +24,7 @@ $total_surat = "SELECT * FROM format_surat";
 $total_surat = mysqli_query($koneksi,$total_surat);
 $total_surat = mysqli_num_rows($total_surat);
 
-$sql = "SELECT * FROM format_surat join arsip_surat on format_surat.id_format_surat = arsip_surat.id_format_surat where jenis_surat = '0'";
+$sql = "SELECT * FROM format_surat";
 $query = mysqli_query($koneksi,$sql);
 $no = 1;
 ?>
@@ -91,7 +91,7 @@ $no = 1;
                         <div class="icon">
                             <i class="fa fa-envelope"></i>
                         </div>
-                        <a href="<?= admin()?>halaman/pengguna" class="small-box-footer">More info
+                        <a href="<?= admin()?>halaman/surat-masuk" class="small-box-footer">More info
                             <i class="fas fa-arrow-circle-right"></i>
                         </a>
                     </div>
@@ -108,7 +108,7 @@ $no = 1;
                         <div class="icon">
                             <i class="fa fa-envelope-open"></i>
                         </div>
-                        <a href="<?= admin()?>halaman/pengguna" class="small-box-footer">More info
+                        <a href="<?= admin()?>halaman/surat-keluar" class="small-box-footer">More info
                             <i class="fas fa-arrow-circle-right"></i>
                         </a>
                     </div>
@@ -125,7 +125,7 @@ $no = 1;
                         <div class="icon">
                             <i class="fas fa-envelope-open-text"></i>
                         </div>
-                        <a href="<?= admin()?>halaman/pengguna" class="small-box-footer">More info
+                        <a href="<?= admin()?>" class="small-box-footer">More info
                             <i class="fas fa-arrow-circle-right"></i>
                         </a>
                     </div>
@@ -139,13 +139,14 @@ $no = 1;
                 <div class="card col-6 col-sm-6" >
                     <div class="card-header">Tabel Data Surat</div>
                     <div class="card-body">
-                        <table id="" class="table table-bordered table-striped">
+                        <table id="tabledashboard" class="table table-bordered table-striped">
                             <thead>
                                 <tr align="center">
                                     <th>No.</th>
                                     <th>Nomor Agenda</th>
                                     <th>Asal Surat</th>
                                     <th>Perihal</th>
+                                    <th>Jenis Surat</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -156,6 +157,13 @@ $no = 1;
                                     <td><?= $data['asal_surat']?></td>
                                     <td>
                                         <?= $data['perihal']?>
+                                    </td>
+                                    <td>
+                                        <?php if($data['jenis_surat'] == 0){
+                                            echo "<div class='badge badge-success'>Surat Masuk</div>";
+                                        }else{
+                                            echo "<div class='badge badge-info'>Surat Keluar</div>";
+                                        }?>
                                     </td>
                                 </tr>
                                 <?php }?>

@@ -51,9 +51,9 @@ $data = mysqli_fetch_assoc($query);
                         </div>
                       </div>
                       <div class="form-group row">
-                        <label for="inputName" class="col-sm-2 col-form-label">Maps URL</label>
+                        <label for="inputName" class="col-sm-2 col-form-label">Penanggung Jawab</label>
                         <div class="col-sm-10">
-                          <textarea name="maps_url" id="" cols="10" rows="3" class="form-control"><?= $data['maps_url']?></textarea>
+                          <input type="text" name="penanggung_jawab" value="<?= $data['penanggung_jawab']?>" class="form-control">
                         </div>
                       </div>
                       <div class="form-group row">

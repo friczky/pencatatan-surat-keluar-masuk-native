@@ -1,11 +1,16 @@
+<?php 
+include '../Config/koneksi.php';
+$sql = "SELECT * FROM tentang WHERE id = 1";
+$query = mysqli_query($koneksi,$sql);
+$data = mysqli_fetch_array($query);
 
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>AdminLTE 3 | Log in (v2)</title>
-  <?php include '../Config/koneksi.php'?>
+  <title>Login | <?= $data['nama_web']?></title>
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome -->
@@ -18,6 +23,11 @@
 <body class="hold-transition login-page">
 <div class="login-box">
   <!-- /.login-logo -->
+  <center>
+    <img src="../Admin/upload/<?= $data['logo']?>" alt="">
+  </center>
+  <br>
+  <br>
   <div class="card card-outline card-primary">
     <div class="card-header text-center">
       <a href="<?= login() ?>" class="h1"><b>Login</b></a>
@@ -51,12 +61,12 @@
         </div>
         <div class="row">
           <div class="col-8">
-            <div class="icheck-primary">
+            <!-- <div class="icheck-primary">
               <input type="checkbox" id="remember">
               <label for="remember">
                 Remember Me
               </label>
-            </div>
+            </div> -->
           </div>
           <!-- /.col -->
           <div class="col-4">
@@ -67,7 +77,7 @@
       </form>
       <!-- /.social-auth-links -->
       <p class="mb-0">
-        <a href="daftar.php" class="text-center">Daftar Akun Baru</a>
+        <!-- <a href="daftar.php" class="text-center">Daftar Akun Baru</a> -->
       </p>
     </div>
     <!-- /.card-body -->

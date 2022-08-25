@@ -3,7 +3,7 @@
 include '../../komponen/header.php';
 $id = 1;
 $nama_web = $_POST['nama_web'];
-$maps_url = $_POST['maps_url'];
+$penanggung_jawab = $_POST['penanggung_jawab'];
 $logo = $_FILES['logo']['name'];
 $logo_old   = $_POST['logo_old'];
 $tmp = $_FILES['logo']['tmp_name'];
@@ -16,7 +16,7 @@ $judul = $_POST['nama_web'];
 }else{
     $logo_save = $logo_old;
 }
-$sql = "UPDATE tentang SET nama_web = '$nama_web', maps_url = '$maps_url', logo = '$logo_save'";
+$sql = "UPDATE tentang SET nama_web = '$nama_web', penanggung_jawab = '$penanggung_jawab', logo = '$logo_save'";
 $query = mysqli_query($koneksi,$sql);
 if($query){
     echo '<script>alert("Data Berhasil Diubah");window.location.href="index.php"</script>';
