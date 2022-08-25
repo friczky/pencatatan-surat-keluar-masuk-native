@@ -35,63 +35,76 @@ $no = 1;
         <!-- /.container-fluid -->
         <br>
         <div class="card">
-        <div class="card-header">
-            <div class="row">
-                <div class="col-sm-6">
-                    <h3 class="card-title">Data Surat Masuk</h3>
-                </div>
-                <div class="col-sm-6 text-right">
-                    <a href="tambah.php" class="btn btn-primary">
-                        <i class="fa fa-plus"></i> Tambah
-                    </a>
+            <div class="card-header">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <h3 class="card-title">Data Surat Masuk</h3>
+                    </div>
+                    <div class="col-sm-6 text-right">
+                        <a href="tambah.php" class="btn btn-primary">
+                            <i class="fa fa-plus"></i>
+                            Tambah
+                        </a>
+                    </div>
                 </div>
             </div>
-        </div>
-        <!-- /.card-header -->
-        <div class="card-body">
-           <?php 
+            <!-- /.card-header -->
+            <div class="card-body">
+                <?php 
            if(isset($_GET['pesan'])){
             echo '<div class="alert alert-success">'.$_GET['pesan'].'</div>';
            }
            ?>
-            <table id="example1" class="table table-bordered table-striped">
-                <thead>
-                    <tr align="center">
-                        <th>No.</th>
-                        <th>Nomor Agenda</th>
-                        <th>Asal Surat</th>
-                        <th>Perihal</th>
-                        <th>Detail</th>
-                        <th>Aksi</th>
-                    </tr>
-                </thead>
-                <tbody>
-                   <?php 
+                <table id="example1" class="table table-bordered table-striped">
+                    <thead>
+                        <tr align="center">
+                            <th>No.</th>
+                            <th>Nomor Agenda</th>
+                            <th>Asal Surat</th>
+                            <th>Perihal</th>
+                            <th>Detail</th>
+                            <th>Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php 
                     foreach ($query as $data) {
                    ?>
-                    <tr align="center">
-                        <td><?= $no++ ?>.</td>
-                        <td><?= $data['nomor_agenda']?></td>
-                        <td><?= $data['asal_surat']?></td>
-                        <td>
-                            <?= $data['perihal']?>
-                        </td>
-                        <td><button class="btn btn-info" data-toggle="modal" data-target="#my-modal<?= $data['id']?>">Lihat</button></td>
-                        <td>
-                            <a href="edit.php?id=<?= $data['id']?>" class="btn btn-primary"><i class="fa fa-edit"></i></a>
-                            <a href="aksi_hapus.php?id=<?= $data['id']?>" onclick="return confirm('Apakah anda ingin menghapus data surat ini ?')" class="btn btn-danger"><i class="fa fa-trash"></i></a>
-                        </td>
-                    </tr>
-                    <?php }?>
-                </tbody>
-                
-            </table>
+                        <tr align="center">
+                            <td><?= $no++ ?>.</td>
+                            <td><?= $data['nomor_agenda']?></td>
+                            <td><?= $data['asal_surat']?></td>
+                            <td>
+                                <?= $data['perihal']?>
+                            </td>
+                            <td>
+                                <button
+                                    class="btn btn-info"
+                                    data-toggle="modal"
+                                    data-target="#my-modal<?= $data['id']?>">Lihat</button>
+                            </td>
+                            <td>
+                                <a href="edit.php?id=<?= $data['id']?>" class="btn btn-primary">
+                                    <i class="fa fa-edit"></i>
+                                </a>
+                                <a
+                                    href="aksi_hapus.php?id=<?= $data['id']?>"
+                                    onclick="return confirm('Apakah anda ingin menghapus data surat ini ?')"
+                                    class="btn btn-danger">
+                                    <i class="fa fa-trash"></i>
+                                </a>
+                            </td>
+                        </tr>
+                        <?php }?>
+                    </tbody>
+
+                </table>
+            </div>
+            <!-- /.card-body -->
         </div>
-        <!-- /.card-body -->
+        <!-- /.card -->
     </div>
-    <!-- /.card -->
-</div>
-<!-- /.col -->
+    <!-- /.col -->
 </div>
 <!-- /.row -->
 </div>
@@ -99,7 +112,6 @@ $no = 1;
 </section>
 <!-- /.content -->
 </div>
-
 
 <?php 
 
