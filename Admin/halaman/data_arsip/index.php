@@ -6,7 +6,7 @@ include '../../komponen/navbar.php';
 include '../../komponen/sidebar.php';
 
 
-$sql = "SELECT * FROM arsip_surat";
+$sql = "SELECT * FROM arsip_surat join format_surat on arsip_surat.id_format_surat = format_surat.id_format_surat order by id desc";
 $query = mysqli_query($koneksi,$sql);
 $no =1;
 
@@ -55,6 +55,7 @@ $no =1;
                 <thead>
                     <tr align="center">
                         <th>No.</th>
+                        <th>Asal Surat</th>
                         <th>Jenis File</th>
                         <th>File</th>
                    
@@ -64,6 +65,7 @@ $no =1;
                    <?php foreach($query as $data) {?>
                     <tr align="center">
                         <td><?= $no ++ ?>.</td>
+                        <td><?= $data['asal_surat']?></td>
                         <td>
                             <?php
                             if($data['jenis_file'] == 0){
